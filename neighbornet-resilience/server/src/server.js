@@ -61,6 +61,12 @@ const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`🚀 NeighborNet server running on port ${PORT}`);
   console.log(`📡 Environment: ${process.env.NODE_ENV || 'development'}`);
+
+  // Keep-alive for Render free tier (prevents 15-min sleep)
+  if (process.env.NODE_ENV === 'production' && process.env.RENDER_EXTERNAL_URL) {
+    const keepAlive = require('./utils/keepAlive');
+    keepAlive(process.env.RENDER_EXTERNAL_URL + '/health');
+  }
 });
 
 module.exports = { app, server };
