@@ -55,6 +55,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 app.use(generalLimiter);
 
+// Root route
+app.get('/', (req, res) => {
+  res.json({ success: true, message: 'NeighborNet Resilience API', version: '1.0.0', docs: '/health' });
+});
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({ success: true, message: 'NeighborNet API is running', timestamp: new Date().toISOString() });
