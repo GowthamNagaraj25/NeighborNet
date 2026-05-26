@@ -157,7 +157,7 @@ export default function Landing() {
       {/* Footer */}
       <footer className="border-t border-gray-100 py-8 text-center text-gray-400 text-sm">
         <p>🏘️ NeighborNet Resilience — Built for the community, by the community</p>
-        <p className="mt-1">Gowtham Preethi KaviyaDharshini Durga</p>
+        <p className="mt-1">Gowtham Preethi</p>
       </footer>
     </div>
   );

@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: neighbornet-api
+    env: node
+    region: singapore
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production

@@ -1,12 +1,14 @@
-# Dependencies — never commit these
+# Dependencies
 node_modules/
 */node_modules/
 
-# Environment files — never commit real secrets
+# Local env files with real secrets — never commit these
 .env
 server/.env
+
+# client/.env.production is committed so Vercel picks up VITE_API_URL
+# But local .env is not committed
 client/.env
-client/.env.production
 
 # Build output
 client/dist/
@@ -15,15 +17,7 @@ client/build/
 # Logs
 *.log
 npm-debug.log*
-yarn-debug.log*
 
-# OS files
+# OS
 .DS_Store
 Thumbs.db
-desktop.ini
-
-# Editor
-.vscode/
-.idea/
-*.swp
-*.swo

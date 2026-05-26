@@ -1,4 +1,5 @@
 const Initiative = require('../models/Initiative');
+const User = require('../models/User');
 
 const getInitiatives = async (req, res, next) => {
   try {
@@ -16,8 +17,7 @@ const createInitiative = async (req, res, next) => {
     const initiative = await Initiative.create({ ...req.body, organizer: req.user._id });
     await initiative.populate('organizer', 'name neighborhood verificationStatus badges');
     // Award badge
-    const { User } = require('../models/User') || require('mongoose').model('User');
-    await require('../models/User').findByIdAndUpdate(req.user._id, {
+    await User.findByIdAndUpdate(req.user._id, {
       $addToSet: { badges: 'Community Organizer' },
     });
     res.status(201).json({ success: true, data: initiative });
